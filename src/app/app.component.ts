@@ -20,10 +20,10 @@ import { AsyncPipe } from '@angular/common';
 export class AppComponent {
   title = 'angular19';
 
-  counter$: Observable<number>;
-
   router = inject(Router);
 
+  // counter store
+  counter$: Observable<number>;
   store = inject(Store<IAppState>);
 
   constructor() {

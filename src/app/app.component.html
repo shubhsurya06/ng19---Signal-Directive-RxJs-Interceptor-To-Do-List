@@ -10,6 +10,12 @@
           <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" routerLink="user" routerLinkActive="active">User</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="recipes" routerLinkActive="active">Recipes</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" routerLink="crisis" routerLinkActive="active">Crisis Center</a>
         </li>
         <li class="nav-item">
@@ -35,11 +41,16 @@
   </div>
 </nav>
 
-<h1>Hello Counter</h1>
-
-<button class="btn btn-success" (click)="increment()">Increment</button>
-<!-- <h1> {{counter$ | async}} </h1> -->
-<button class="btn btn-warning" (click)="decrement()">Decrement</button>
+<div class="container">
 
 
-<router-outlet/>
+  <h1>Hello Counter</h1>
+
+  <button class="btn btn-success" (click)="increment()">Increment</button>
+  <!-- <h1> {{counter$ | async}} </h1> -->
+  <button class="btn btn-warning" (click)="decrement()">Decrement</button>
+
+  <hr>
+
+  <router-outlet />
+</div>

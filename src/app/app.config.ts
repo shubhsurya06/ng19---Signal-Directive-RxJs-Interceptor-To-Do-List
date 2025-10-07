@@ -9,27 +9,28 @@ import { HttpRequest, HttpHandlerFn, HttpEvent } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { provideStore } from '@ngrx/store';
 import { counterReducer } from './store/counter.reducer';
+import { provideEffects } from '@ngrx/effects';
+import { UserEffects } from './store/user/effect';
+import { userReducer } from './store/user/reducer';
+import { NewCounterReducer } from './store/counter/reducer';
+import { RecipesEffects } from './store/recipes/effects';
+import { recipesReducer } from './store/recipes/reducer';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
-    provideHttpClient(withInterceptors([
-        (req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> => {
-            console.log('Interceptor - Request sent:', req);
-            return next(req).pipe(tap({
-                next: (event) => console.log('Interceptor - Response:', event),
-                error: (err) => console.error('Interceptor - Error:', err)
-            }));
-        }
-    ])),
-    // provideHttpClient(),
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: JwtInterceptor,
-    //   multi: true
-    // },
-    TaskDirective,
-    provideStore({count: counterReducer})
-]
+    providers: [
+        provideZoneChangeDetection({ eventCoalescing: true }),
+        provideRouter(routes),
+        provideHttpClient(withInterceptors([
+            (req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> => {
+                console.log('Interceptor - Request sent:', req);
+                return next(req).pipe(tap({
+                    next: (event) => console.log('Interceptor - Response:', event),
+                    error: (err) => console.error('Interceptor - Error:', err)
+                }));
+            }
+        ])),
+        TaskDirective,
+        provideStore({ count: counterReducer, user: userReducer, counter: NewCounterReducer, recipes: recipesReducer }),
+        provideEffects([UserEffects, RecipesEffects])
+    ]
 };

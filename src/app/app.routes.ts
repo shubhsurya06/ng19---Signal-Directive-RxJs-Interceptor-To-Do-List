@@ -8,9 +8,13 @@ import { RxjsCombineComponent } from './rx-js/rxjs-combine/rxjs-combine.componen
 import { SignalComponent } from './signal/signal.component';
 import { TodoComponent } from './todo/todo.component';
 import { TaskComponent } from './task/task/task.component';
+import { UserComponent } from './user/user.component';
+import { RecipesComponent } from './recipes/recipes.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent, title: 'Home'},
+    { path: 'user', component: UserComponent, title: 'User NgRx Store' },
+    { path: 'recipes', component: RecipesComponent, title: 'Recipes NgRx Store' },
     { path: 'crisis-list', component: CrisisListComponent, title: 'Crisis List'},
     { path: 'heroes-list', component: HeroesListComponent, title: 'Heroes List'},
 

@@ -1,0 +1,39 @@
+<div class="container">
+    <h1>Recipes</h1>
+    <div class="row">
+        @if (loading$ | async) {
+            <p>Loading recipe data... Please wait....</p>
+        }
+
+        @if (!(loading$ | async)) {
+            @for (recipe of recipes$ | async; track $index) {
+                <div class="card" style="width:400px">
+                    <img class="card-img-top" [src]="recipe.image" [alt]="recipe.name">
+                    <div class="card-body">
+                        <h4 class="card-title">{{recipe.name}}</h4>
+                        <p><strong>Cuisine</strong>: {{recipe.cuisine}}</p>
+                        <p><strong>Meal Type</strong>:
+                            @for (mealType of recipe.mealType; track $index) {
+                                <span>{{mealType}}, </span>
+                            }
+                        </p>
+
+                        <strong>Instructions</strong>:<ul>
+                            @for (ins of recipe.instructions; track $index) {
+                                <li>{{ins}}</li>
+                            }
+                        </ul>
+
+                        
+
+                        <p><strong>Tags</strong>:
+                            @for (tags of recipe.tags; track $index) {
+                                <small>{{tags}}, </small>
+                            }
+                        </p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

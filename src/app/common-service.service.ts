@@ -45,4 +45,8 @@ export class CommonServiceService {
     }
     return this.userDetailsMap.get(id);
   }
+
+  getRecipesData () {
+    return this.http.get('https://dummyjson.com/recipes');
+  }
 }
