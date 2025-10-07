@@ -1,0 +1,50 @@
+<div class="container">
+    <h1>Hello, welcome to {{title}}</h1>
+    <hr>
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">TO DO Task</div>
+                <div class="card-body">
+                    <form [formGroup]="todoForm" (ngSubmit)="addTask()">
+                        <input type="text" formControlName="todoItem" placeholder="Add todo item" class="form-control">
+                        <br>
+                        <button class="btn" [ngClass]="{'btn-success': !isEditMode, 'btn-warning': isEditMode}"
+                            type="submit">{{isEditMode ? 'Update Task' : 'Add Task'}}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">Task Items</div>
+            </div>
+            <div class="card-body">
+
+                @if(!todoList.length) {
+                    <p>No items present in task. Please add some tasks.</p>
+                }
+
+                @if (todoList.length) {
+                    @for (item of todoList; track item.id) {
+                    <div class="card">
+                        <div class="card-body" style="display: flex;justify-content: space-between;">
+                            <div class="div">
+                                <input type="checkbox" [checked]="item.completed" (change)="toggleComplete(item)" name=""
+                                    id="">&nbsp;
+                                <span [ngClass]="{'strike': item.completed}">{{item.name}}</span>
+                            </div>
+
+                            <div>
+                                <button class="btn btn-danger" (click)="editItem(item)">Edit</button>
+                                <button class="btn btn-warning" (click)="deleteItem(item)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

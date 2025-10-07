@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="text-center">
+            <h1>New Task List</h1>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">Add Task</div>
+                <div class="card-body">
+                    <form [formGroup]="todoForm" (ngSubmit)="saveTasks()">
+                        <input type="text" formControlName="title" placeholder="Add task from here" class="form-control">
+                        <br>
+                        <button class="btn" [ngClass]="{'btn-warning' : isEditMode, 'btn-success': !isEditMode}">{{isEditMode ? 'Update Task' : 'Add Task'}}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">Tasks List</div>
+                <div class="card-body">
+                    @if (!taskList.length) {
+                        <p>Task items not present. Please add items.</p>
+                    }
+
+                    @if (taskList.length) {
+                        @for (item of taskList; track item.id) {
+                            <div class="card" style="margin-bottom: 20px;">
+                                <div class="card-body" appTaskDirective [isCompleted]="item.isCompleted" style="display: flex; justify-content: space-between;">
+                                    <div class="">
+                                        <input type="checkbox" [checked]="item.isCompleted" (change)="toggleCheckBox(item)">
+                                        <span [ngClass]="{'strike': item.isCompleted}">{{item.title}}</span>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-warning" appToolTipDirective [title]="edit" (click)="onEdit(item)" style="margin-right: 10px;">Edit</button>
+                                        <button class="btn btn-danger" appToolTipDirective [title]="delete" (click)="onDelete(item)">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

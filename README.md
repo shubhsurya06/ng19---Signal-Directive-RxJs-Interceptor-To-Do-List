@@ -1,6 +1,99 @@
-# Angular19
+# Angular 19 Feature Showcase
+
+🚀 Modern Angular 19 showcase project demonstrating expertise in Signal API, NgRx state management, RxJS operators, and custom directives. Features include a robust Todo app, HTTP interceptors, and reactive forms. Implements best practices with standalone components and OnPush change detection.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+
+## Features
+
+### 1. Custom Directives
+* `HighlightDirective`: Changes background color on hover
+* `TaskDirective`: Manages task list item styling
+  - Dynamic background color based on task completion
+  - Custom hover effects
+* `ToolTipDirective`: Custom tooltip implementation
+  - Dynamic content display
+  - Mouse enter/leave events
+
+### 2. Signal API Implementation
+* Demonstrates Angular 19's new Signal API features
+* Various signal types implemented:
+  - Primitive signals (`firstName`, `lastName`)
+  - Array signals (`cityList`)
+  - Object signals (`stateList`)
+* Signal state management
+* Integration with OnPush change detection
+* Computed signals and effects
+
+### 3. Counter using NgRx Store
+* Complete Redux pattern implementation
+* Store features:
+  - State management with `counterReducer`
+  - Action creators: `increment` and `decrement`
+  - Store selectors
+  - Observable state management
+* Integration across multiple components
+* Async pipe implementation
+
+### 4. Todo List Application
+* Dual implementations:
+  - `TodoComponent`
+  - `TaskComponent`
+* Core Features:
+  - ✅ Add/Edit/Delete tasks
+  - 🔄 Task completion toggling
+  - 💾 Local storage persistence
+  - 📝 Reactive form implementation
+  - 🎨 Dynamic styling for completed tasks
+  - 🔍 Tooltip integration
+
+### 5. HTTP Interceptor
+* Custom HTTP interceptor with:
+  - Request/Response logging
+  - Error handling
+  - JWT token integration capability
+* Global HTTP request/response manipulation
+* Headers modification support
+
+### 6. RxJS Features
+* Basic RxJS Operations (`RxjsBasicComponent`):
+  - Observable creation (`of`, `from`)
+  - Time-based operators (`interval`, `timer`)
+  - `Subject` and `BehaviorSubject`
+  
+* Advanced RxJS (`RxjsCombineComponent`):
+  - Transformation operators (`mergeMap`, `switchMap`)
+  - Combination operators (`forkJoin`)
+  - Form control integration
+  - HTTP request handling
+  - JSONPlaceholder API integration
+
+### 7. Routing & Navigation
+* Feature-based routing structure
+* Implementation includes:
+  - Child routes
+  - Route parameters
+  - Navigation guards
+  - Router events handling
+
+### 8. Additional Features
+* Modern Angular practices:
+  - Standalone components
+  - Dependency injection patterns
+  - OnPush change detection
+  - Reactive Forms
+  - Component communication
+
+## Project Structure
+```
+src/
+├── app/
+│   ├── components/
+│   ├── directives/
+│   ├── services/
+│   ├── store/
+│   └── interceptors/
+```
 
 ## Development server
 

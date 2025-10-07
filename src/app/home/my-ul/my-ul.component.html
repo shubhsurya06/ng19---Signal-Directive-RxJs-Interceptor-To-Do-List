@@ -1,0 +1,10 @@
+<h3>Child component</h3>
+
+<!-- <li *ngFor="let item of cityList">
+    {{item}}
+</li> -->
+<ul>
+    @for (item of itemList; track $index) {
+        <li>{{item}}</li>
+    }
+</ul>

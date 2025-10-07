@@ -1,0 +1,38 @@
+<div class="container">
+
+    <h2>Counter Values: {{counter$ | async}}</h2>
+
+    <h2>Signal in Angular 19</h2>
+     <div class="row">
+        <p>{{firstName()}}</p>
+
+        <p>
+            <input type="text" [value]="lastName()">
+        </p>
+
+        <p>
+            Course name using <b>String</b>: {{oldCourseName}} <br>
+            Course name using <b>Signal</b>: {{courseName()}} 
+
+
+            <!-- <button class="btn btn-primary" (click)="changeCourse()">Change</button> -->
+        </p>
+
+        <p>
+            City list (using array): {{cityList()}}
+
+            <button class="btn btn-primary" (click)="addCity()">Add</button>
+        </p>
+
+        <p>
+            State List (using objects): I am {{stateList().name}}, from {{stateList().city}}, {{stateList().pinCode}}
+
+            <button class="btn btn-primary" (click)="addPinCode()">Modify</button>
+        </p>
+
+        <p>
+            Roll No: {{rollNo()}}
+            <button class="btn btn-primary" (click)="increment()">Increment</button>
+        </p>
+     </div>
+</div>

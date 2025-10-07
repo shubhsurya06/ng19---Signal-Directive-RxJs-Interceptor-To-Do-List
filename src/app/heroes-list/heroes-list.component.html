@@ -1,0 +1,33 @@
+
+<div class="container">
+    <h3>HEROES</h3>
+    <p>Get your heroes here</p>
+    <div class="row">
+        @if (loader) {
+            <div class="spinner-border"></div>
+        }
+
+        @if (userList.length) {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td>Phone</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of userList; track item.id) {
+                        <tr>
+                            <td>{{item.name}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.phone}}</td>
+                        </tr>
+                        <!-- <tr>
+                        </tr> -->
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

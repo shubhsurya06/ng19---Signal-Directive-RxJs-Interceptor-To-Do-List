@@ -1,0 +1,59 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-4">
+            Counter from NgRx STORE: {{counter$ | async}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <div class="card" appHighlight>
+                <div class="card-body text-center">
+                    Home Component
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card" appHighlight="lightgreen">
+                <div class="card-body text-center">
+                    Home Component
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div  class="card">
+                <div class="card-body text-center">
+                    Count => {{count()}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <h1>My First Attribute Directive</h1>
+        <h2>Pick highlight color:</h2>
+        <div>
+            <input type="radio" name="colors" (click)="color='green';">Green
+            <input type="radio" name="colors" (click)="color='pink'">Pink
+            <input type="radio" name="colors" (click)="color='cyan'">Cyan
+        </div>
+
+        <div class="col-3">
+            <div class="card" [appHighlight]="color">
+                <div class="card-body text-center">
+                    Home Component
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <hr>
+    <div class="row">
+        <h1>My Ul Child component</h1>
+        <h3>This is count from signal:- {{count()}}</h3>
+        <app-my-ul [itemList]="cityList"></app-my-ul>
+    </div>
+</div>
