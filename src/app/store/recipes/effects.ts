@@ -16,8 +16,7 @@ export class RecipesEffects {
             ofType(getRecipesData),
             mergeMap(() => 
                 this.commonService.getRecipesData().pipe(
-                    map((data: any) => {
-                        let recipes = data.recipes.slice(0, 5);
+                    map((recipes) => {
                         return loadRecipesDataSuccess({recipes});
                     })
                 )

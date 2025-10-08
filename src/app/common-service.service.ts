@@ -46,7 +46,15 @@ export class CommonServiceService {
     return this.userDetailsMap.get(id);
   }
 
+  /**
+   * Get recipe data from API
+   * Getting data of 30 recipes,
+   * returning only initial 5 recipes from here using .slice() method
+   * @returns 
+   */
   getRecipesData () {
-    return this.http.get('https://dummyjson.com/recipes');
+    return this.http.get('https://dummyjson.com/recipes').pipe(
+      map((data: any) => data.recipes.slice(0,5))
+    );
   }
 }
