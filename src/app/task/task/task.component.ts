@@ -8,7 +8,7 @@ import { ToolTipDirective } from '../newTooltip.directive';
 
 @Component({
   selector: 'app-task',
-  imports: [ReactiveFormsModule, NgClass, NgFor, TaskDirective, ToolTipDirective],
+  imports: [ReactiveFormsModule, NgClass, TaskDirective, ToolTipDirective],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })

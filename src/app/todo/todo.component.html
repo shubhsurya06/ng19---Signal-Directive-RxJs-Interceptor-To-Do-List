@@ -28,7 +28,7 @@
 
                 @if (todoList.length) {
                     @for (item of todoList; track item.id) {
-                    <div class="card">
+                    <div class="card" appTodo [isCompleted]="item.completed">
                         <div class="card-body" style="display: flex;justify-content: space-between;">
                             <div class="div">
                                 <input type="checkbox" [checked]="item.completed" (change)="toggleComplete(item)" name=""
