@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { TaskService } from '../service/task.service';
 import { ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NgClass, NgFor, NgIf } from '@angular/common';
+import { TodoDirective } from './todo.directive';
 
 @Component({
   selector: 'app-todo',
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, TodoDirective],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })

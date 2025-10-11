@@ -15,16 +15,17 @@ export const routes: Routes = [
     { path: 'home', component: HomeComponent, title: 'Home'},
     { path: 'user', component: UserComponent, title: 'User NgRx Store' },
     { path: 'recipes', component: RecipesComponent, title: 'Recipes NgRx Store' },
-    { path: 'crisis-list', component: CrisisListComponent, title: 'Crisis List'},
-    { path: 'heroes-list', component: HeroesListComponent, title: 'Heroes List'},
+    // { path: 'crisis-list', component: CrisisListComponent, title: 'Crisis List'},
+    // { path: 'heroes-list', component: HeroesListComponent, title: 'Heroes List'},
 
-    { path: 'heroes', redirectTo: '/heroes-list', pathMatch: 'full'},
-    { path: 'crisis', redirectTo: '/crisis-list', pathMatch: 'full'},
-    { path: 'rxjs-basic', component: RxjsBasicComponent, pathMatch: 'full'},
-    { path: 'combine-rxjs', component: RxjsCombineComponent, pathMatch:'full'},
+    { path: 'heroes', component: CrisisListComponent, pathMatch: 'full'},
+    { path: 'crisis', component: HeroesListComponent, pathMatch: 'full'},
+    // { path: 'rxjs-basic', component: RxjsBasicComponent, pathMatch: 'full'},
+    // { path: 'combine-rxjs', component: RxjsCombineComponent, pathMatch:'full'},
     { path: 'signal', component: SignalComponent, pathMatch:'full'},
     { path: 'task', component: TodoComponent, title: 'ToDo Task' },
     { path: 'newTask', component: TaskComponent, title: 'Task To Do' },
+    { path: '', redirectTo: 'home', pathMatch: 'full'}
     // { path: '**', component: PageNotFoundComponent }
 
 ];

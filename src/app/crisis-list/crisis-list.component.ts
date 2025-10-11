@@ -4,6 +4,7 @@ import { IAppState } from '../store/store';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { increment, decrement } from '../store/counter.action';
 
 @Component({
   standalone: true,
@@ -65,5 +66,13 @@ export class CrisisListComponent implements OnInit {
 
     return pr;
 
+  }
+
+  increment() {
+    this.store.dispatch(increment());
+  }
+
+  decrement() {
+    this.store.dispatch(decrement());
   }
 }
