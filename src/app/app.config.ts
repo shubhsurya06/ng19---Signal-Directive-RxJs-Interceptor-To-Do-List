@@ -15,6 +15,8 @@ import { userReducer } from './store/user/reducer';
 import { NewCounterReducer } from './store/counter/reducer';
 import { RecipesEffects } from './store/recipes/effects';
 import { recipesReducer } from './store/recipes/reducer';
+import { TodoEffects } from './todo/store/effects';
+import { todoReducer } from './todo/store/reducer';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -30,7 +32,13 @@ export const appConfig: ApplicationConfig = {
             }
         ])),
         TaskDirective,
-        provideStore({ count: counterReducer, user: userReducer, counter: NewCounterReducer, recipes: recipesReducer }),
-        provideEffects([UserEffects, RecipesEffects])
+        provideStore({ 
+            count: counterReducer, 
+            user: userReducer, 
+            counter: NewCounterReducer, 
+            recipes: recipesReducer, 
+            todoList: todoReducer 
+        }),
+        provideEffects([UserEffects, RecipesEffects, TodoEffects])
     ]
 };
