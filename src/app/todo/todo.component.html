@@ -1,13 +1,13 @@
 <div class="container">
-    <h1>Hello, welcome to {{title}}</h1>
-    <hr>
+    <!-- <h1>Hello, welcome to {{title}}</h1> -->
+    <!-- <hr> -->
     <div class="row">
         <div class="col-4">
             <div class="card">
                 <div class="card-header">TO DO Task</div>
                 <div class="card-body">
                     <form [formGroup]="todoForm" (ngSubmit)="addTask()">
-                        <input type="text" formControlName="todoItem" placeholder="Add todo item" class="form-control">
+                        <input type="text" formControlName="title" placeholder="Add todo item" class="form-control">
                         <br>
                         <button class="btn" [ngClass]="{'btn-success': !isEditMode, 'btn-warning': isEditMode}"
                             type="submit">{{isEditMode ? 'Update Task' : 'Add Task'}}</button>
@@ -22,18 +22,18 @@
             </div>
             <div class="card-body">
 
-                @if(!todoList.length) {
+                @if(!(todoList$ | async)?.length) {
                     <p>No items present in task. Please add some tasks.</p>
                 }
 
-                @if (todoList.length) {
-                    @for (item of todoList; track item.id) {
-                    <div class="card" appTodo [isCompleted]="item.completed">
+                @if ((todoList$ | async)?.length) {
+                    @for (item of todoList$ | async; track item.id) {
+                    <div class="card" appTodo [isCompleted]="item.isCompleted">
                         <div class="card-body" style="display: flex;justify-content: space-between;">
                             <div class="div">
-                                <input type="checkbox" [checked]="item.completed" (change)="toggleComplete(item)" name=""
+                                <input type="checkbox" [checked]="item.isCompleted" (change)="toggleComplete(item)" name=""
                                     id="">&nbsp;
-                                <span [ngClass]="{'strike': item.completed}">{{item.name}}</span>
+                                <span [ngClass]="{'strike': item.isCompleted}">{{item.title}}</span>
                             </div>
 
                             <div>
