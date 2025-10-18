@@ -24,6 +24,7 @@ export class TodoEffects {
         )
     )
 
+    // add todo and load addTodoSuccess method
     addTodo$ = createEffect(() =>
         this.actions$.pipe(
             ofType(TodoActions.addTodo),
@@ -35,6 +36,7 @@ export class TodoEffects {
         )
     )
 
+    // update todo and load updateTodoSuccess method
     updateTodoSuccess$ = createEffect(() => (
         this.actions$.pipe(
             ofType(TodoActions.updateTodo),
@@ -46,6 +48,7 @@ export class TodoEffects {
         )
     ))
 
+    // delete todo and load deleteTodoSuccess method
     deleteTodoSuccess$ = createEffect(() =>
         this.actions$.pipe(
             ofType(TodoActions.deleteTodo),
@@ -57,6 +60,7 @@ export class TodoEffects {
         )
     )
 
+    // toggle todo and load toggleTodoSuccess method (when click on DONE, mark it as task done)
     toggleTodoSuccess$ = createEffect(() =>
         this.actions$.pipe(
             ofType(TodoActions.toggleTodo),
