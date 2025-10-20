@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row mb-5">
+        <h1 class="text-primary text-center">Vendor Component</h1>
+    </div>
+
+    <button class="btn btn-warning" (click)="isShowAlert = !isShowAlert;">Show Alert</button>
+    <div class="row mb-4">
+
+        <h3>Current Time: {{currentTime}}</h3>
+
+        <h3>Current Date: {{currentDate}}</h3>
+    </div>
+    <div class="row">
+        @if (isShowAlert) {
+            <app-alert></app-alert>
+        }
+    </div>
+</div>

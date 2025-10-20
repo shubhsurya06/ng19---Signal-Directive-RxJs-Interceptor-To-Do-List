@@ -9,6 +9,7 @@ import { Store, select } from '@ngrx/store';
 import { IAppState } from './store/store';
 import { decrement, increment } from './store/counter.action';
 import { AsyncPipe } from '@angular/common';
+import { UserService } from './service/user.service';
 
 @Component({
   standalone: true,
@@ -25,6 +26,9 @@ export class AppComponent {
   // counter store
   counter$: Observable<number>;
   store = inject(Store<IAppState>);
+
+  // user service
+  userService = inject(UserService);
 
   constructor() {
     this.counter$ = this.store.pipe(select('count'));
@@ -48,5 +52,13 @@ export class AppComponent {
 
   goToHeroesList() {
     this.router.navigate(['heroes-list']);
+  }
+
+  // get current time and date using user service Subjects, BehaviourSubjects, or Observables
+  getTime() {
+    let currentTime = new Date();
+    this.userService.currentTime$.next(currentTime.toLocaleTimeString());
+
+    this.userService.currentDate$.next(currentTime.toLocaleDateString());
   }
 }
