@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { IAppState } from '../store/store';
 import { AsyncPipe } from '@angular/common';
@@ -31,7 +31,10 @@ export class SignalComponent implements OnInit, OnDestroy {
   cityList = signal<string[]>(['Pune', 'Nagpur', 'Satara']);
 
   currentTime$ = signal<string>('');
+  currentTimeSubscription!: Subscription;;
   currentDate$ = signal<string>('');
+  currentDateSubscription!: Subscription;
+
 
   rollNo = signal<number>(0);
 
@@ -51,12 +54,12 @@ export class SignalComponent implements OnInit, OnDestroy {
       // this.courseName.set('React JS');
     }, 5000)
 
-    this.userService.currentTime$.subscribe(res => {
+    this.currentDateSubscription = this.userService.currentTime$.subscribe(res => {
       console.log('Time received using Subject in Signal:');
       this.currentTime$.set(res);
     });
 
-    this.userService.currentDate$.subscribe(res => {
+    this.currentDateSubscription = this.userService.currentDate$.subscribe(res => {
       console.log('Date received using Behaviour Subject in Signal:');
       this.currentDate$.set(res);
     });
@@ -67,7 +70,9 @@ export class SignalComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // this.currentDate$.unsubscribe();
+    this.currentTimeSubscription?.unsubscribe();
+    this.currentDateSubscription?.unsubscribe();
+    console.log('Signal Component Destroyed and unsubscribing the subscriptions');
   }
 
   addCity() {
