@@ -10,6 +10,7 @@ import { TodoComponent } from './todo/todo.component';
 import { TaskComponent } from './task/task/task.component';
 import { UserComponent } from './user/user.component';
 import { RecipesComponent } from './recipes/recipes.component';
+import { VendorComponent } from './vendor/vendor.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent, title: 'Home'},
@@ -25,6 +26,7 @@ export const routes: Routes = [
     { path: 'signal', component: SignalComponent, pathMatch:'full'},
     { path: 'task', component: TodoComponent, title: 'ToDo Task' },
     { path: 'newTask', component: TaskComponent, title: 'Task To Do' },
+    { path: 'vendor', component: VendorComponent, title: 'Vendor' },
     { path: '', redirectTo: 'home', pathMatch: 'full'}
     // { path: '**', component: PageNotFoundComponent }
 

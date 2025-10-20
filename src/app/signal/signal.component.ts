@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { IAppState } from '../store/store';
 import { AsyncPipe } from '@angular/common';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-signal',
@@ -11,11 +12,13 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './signal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SignalComponent implements OnInit {
+export class SignalComponent implements OnInit, OnDestroy {
 
   counter$: Observable<number>;
 
   store = inject(Store<IAppState>);
+
+  userService = inject(UserService);
 
   firstName = signal('Shubham');
 
@@ -26,6 +29,9 @@ export class SignalComponent implements OnInit {
   oldCourseName : string = 'Old Angular'
 
   cityList = signal<string[]>(['Pune', 'Nagpur', 'Satara']);
+
+  currentTime$ = signal<string>('');
+  currentDate$ = signal<string>('');
 
   rollNo = signal<number>(0);
 
@@ -44,9 +50,24 @@ export class SignalComponent implements OnInit {
       this.oldCourseName = 'Old React JS';
       // this.courseName.set('React JS');
     }, 5000)
+
+    this.userService.currentTime$.subscribe(res => {
+      console.log('Time received using Subject in Signal:');
+      this.currentTime$.set(res);
+    });
+
+    this.userService.currentDate$.subscribe(res => {
+      console.log('Date received using Behaviour Subject in Signal:');
+      this.currentDate$.set(res);
+    });
+
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    // this.currentDate$.unsubscribe();
   }
 
   addCity() {
