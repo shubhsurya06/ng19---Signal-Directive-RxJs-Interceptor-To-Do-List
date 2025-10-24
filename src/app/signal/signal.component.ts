@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal, computed, effect } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { IAppState } from '../store/store';
@@ -35,6 +35,8 @@ export class SignalComponent implements OnInit, OnDestroy {
   currentDate$ = signal<string>('');
   currentDateSubscription!: Subscription;
 
+  fullName = computed(() => this.firstName() + ' '+ this.lastName())
+
 
   rollNo = signal<number>(0);
 
@@ -64,6 +66,14 @@ export class SignalComponent implements OnInit, OnDestroy {
       this.currentDate$.set(res);
     });
 
+    effect(() => {
+      console.log(this.lastName() + ' change in lastName() & checking using effects.')
+    })
+
+    effect(() => {
+      console.log(this.firstName() + ' change in firstName() & checking using effects.')
+    })
+
   }
 
   ngOnInit(): void {
@@ -85,6 +95,14 @@ export class SignalComponent implements OnInit, OnDestroy {
 
   increment() {
     this.rollNo.update(oldValue => oldValue + 1);
+  }
+
+  changeLName() {
+    this.lastName.set('Nikam');
+  }
+
+  changeFName() {
+    this.firstName.set('Santosh');
   }
 
 }

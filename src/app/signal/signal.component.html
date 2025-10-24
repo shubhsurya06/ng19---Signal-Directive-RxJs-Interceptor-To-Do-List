@@ -40,5 +40,10 @@
         <p>
             Current Date: {{currentDate$()}}
         </p>
+        <p>
+            <button class="btn btn-warning" (click)="changeLName()">Change LName</button>
+            <button class="btn btn-warning" (click)="changeFName()">Change FName</button>
+        </p>
+        <p>FullName using computed signal: {{fullName()}}</p>
      </div>
 </div>
