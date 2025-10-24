@@ -17,6 +17,7 @@ import { RecipesEffects } from './store/recipes/effects';
 import { recipesReducer } from './store/recipes/reducer';
 import { TodoEffects } from './todo/store/effects';
 import { todoReducer } from './todo/store/reducer';
+import { errorInterceptor } from './interceptor/error.interceptor';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -29,7 +30,7 @@ export const appConfig: ApplicationConfig = {
                     next: (event) => console.log('Interceptor - Response:', event),
                     error: (err) => console.error('Interceptor - Error:', err)
                 }));
-            }
+            }, errorInterceptor
         ])),
         TaskDirective,
         provideStore({ 
