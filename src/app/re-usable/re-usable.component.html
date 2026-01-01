@@ -1,0 +1,6 @@
+
+<div class="col-md-3">
+    <input [type]="type" [placeholder]="placeholder" class="form-control" #inputRef/>
+
+    <button class="btn btn-sm btn-primary" (click)="sendToParent($event, inputRef)">SendToParent</button>
+</div>

@@ -19,8 +19,8 @@ export const routes: Routes = [
     // { path: 'crisis-list', component: CrisisListComponent, title: 'Crisis List'},
     // { path: 'heroes-list', component: HeroesListComponent, title: 'Heroes List'},
 
-    { path: 'heroes', component: CrisisListComponent, pathMatch: 'full'},
-    { path: 'crisis', component: HeroesListComponent, pathMatch: 'full'},
+    { path: 'crisis', component: CrisisListComponent, pathMatch: 'full'},
+    { path: 'heroes', component: HeroesListComponent, pathMatch: 'full'},
     // { path: 'rxjs-basic', component: RxjsBasicComponent, pathMatch: 'full'},
     // { path: 'combine-rxjs', component: RxjsCombineComponent, pathMatch:'full'},
     { path: 'signal', component: SignalComponent, pathMatch:'full'},

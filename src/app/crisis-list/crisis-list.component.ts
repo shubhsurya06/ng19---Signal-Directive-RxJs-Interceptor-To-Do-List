@@ -5,11 +5,12 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { increment, decrement } from '../store/counter.action';
+import { ReUsableComponent } from '../re-usable/re-usable.component';
 
 @Component({
   standalone: true,
   selector: 'app-crisis-list',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, ReUsableComponent],
   templateUrl: './crisis-list.component.html',
   styleUrl: './crisis-list.component.scss'
 })
@@ -22,6 +23,13 @@ export class CrisisListComponent implements OnInit {
 
 
   cart = ['shoes', 'bags', 'Kurtas'];
+
+  // re-usable component inputs starts
+  reUsableType: string = 'text';
+  reUsablePlaceholder: string = 'Enter something here...';
+
+  outputValueFromReUsableComp: string = '';
+  // re-usable component inputs ends
 
   constructor(private router: Router) {
     this.counter$ = this.store.select('count');
@@ -74,5 +82,10 @@ export class CrisisListComponent implements OnInit {
 
   decrement() {
     this.store.dispatch(decrement());
+  }
+
+  getDataFromReUsableComponent(ev: any) {
+    console.log('Data received from re-usable component:', ev);
+    this.outputValueFromReUsableComp = ev;
   }
 }

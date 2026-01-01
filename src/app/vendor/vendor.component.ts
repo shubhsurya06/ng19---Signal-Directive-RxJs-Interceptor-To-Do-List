@@ -3,10 +3,11 @@ import { AlertComponent } from '../alert/alert.component';
 import { UserService } from '../service/user.service';
 import { Subscription } from 'rxjs';
 import { OfflineDirective } from "../directive/offline.directive";
+import { ReUsableComponent } from '../re-usable/re-usable.component';
 
 @Component({
   selector: 'app-vendor',
-  imports: [AlertComponent, OfflineDirective],
+  imports: [AlertComponent, OfflineDirective, ReUsableComponent],
   templateUrl: './vendor.component.html',
   styleUrls: ['./vendor.component.scss']
 })
@@ -18,6 +19,12 @@ export class VendorComponent implements OnDestroy {
   private currentDateSub?: Subscription;
 
   isShowAlert : boolean = false;
+
+  // reUsable component data sharing starts here
+  reUsableType: string = 'password';
+  reUsablePlaceholder: string = 'Enter password'
+  inputValueFromChild: string = '';
+  // reUsable component data sharing ends here
 
   constructor() {
     this.currentTimeSub = this.userSer.currentTime$.subscribe((time) => {
@@ -36,5 +43,14 @@ export class VendorComponent implements OnDestroy {
     console.log('unsubscribe from vendor successfully.')
     this.currentTimeSub?.unsubscribe();
     this.currentDateSub?.unsubscribe();
+  }
+
+  /**
+   * get data from child re-usable component
+   * @param data 
+   */
+  getValueFromChild(data: any) {
+    console.log('Data received from re-usable component in vendor component:', data);
+    this.inputValueFromChild = data;
   }
 }

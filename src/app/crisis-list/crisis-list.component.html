@@ -7,3 +7,13 @@
 <button class="btn btn-warning" (click)="decrement()">Decrement</button>
 
 <h2>Counter: {{counter$ | async}}</h2>
+
+<p><br /></p>
+<hr>
+<h2>Using re-usable component</h2>
+
+<app-re-usable [type]="reUsableType" [placeholder]="reUsablePlaceholder" (sendEventEmitter)="getDataFromReUsableComponent($event)"></app-re-usable>
+
+@if (outputValueFromReUsableComp.length > 0) {
+  <h3>You entered: {{outputValueFromReUsableComp}}</h3>
+}

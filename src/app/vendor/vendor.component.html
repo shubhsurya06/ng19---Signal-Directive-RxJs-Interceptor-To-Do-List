@@ -28,4 +28,12 @@
             You are offline!
         </h1>
     </div> -->
+
+    <p><br/></p>
+    <hr>
+    <h3>Re-Usable component working</h3>
+    <app-re-usable [type]="reUsableType" [placeholder]="reUsablePlaceholder" (sendEventEmitter)="getValueFromChild($event)"></app-re-usable>
+    @if (inputValueFromChild.length) {
+        <h4>Password form re-usable component: {{inputValueFromChild}}</h4>
+    }
 </div>
