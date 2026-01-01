@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Task } from './../task.model';
 import { NewTaskService } from './../new-task.service';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { TaskDirective } from '../task.directive';
 import { ToolTipDirective } from '../newTooltip.directive';
 

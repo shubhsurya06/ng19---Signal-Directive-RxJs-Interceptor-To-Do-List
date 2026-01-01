@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { TaskService } from '../service/task.service';
 import { ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { TodoDirective } from './todo.directive';
 import { Store } from '@ngrx/store';
 import { Task } from '../task/task.model';
