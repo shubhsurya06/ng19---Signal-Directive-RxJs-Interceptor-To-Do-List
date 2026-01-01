@@ -2,10 +2,11 @@ import { Component, inject, OnDestroy } from '@angular/core';
 import { AlertComponent } from '../alert/alert.component';
 import { UserService } from '../service/user.service';
 import { Subscription } from 'rxjs';
+import { OfflineDirective } from "../directive/offline.directive";
 
 @Component({
   selector: 'app-vendor',
-  imports: [AlertComponent],
+  imports: [AlertComponent, OfflineDirective],
   templateUrl: './vendor.component.html',
   styleUrls: ['./vendor.component.scss']
 })

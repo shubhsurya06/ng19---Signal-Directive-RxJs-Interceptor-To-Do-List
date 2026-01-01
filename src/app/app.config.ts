@@ -18,6 +18,7 @@ import { recipesReducer } from './store/recipes/reducer';
 import { TodoEffects } from './todo/store/effects';
 import { todoReducer } from './todo/store/reducer';
 import { errorInterceptor } from './interceptor/error.interceptor';
+import { OfflineDirective } from './directive/offline.directive';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -33,6 +34,7 @@ export const appConfig: ApplicationConfig = {
             }, errorInterceptor
         ])),
         TaskDirective,
+        OfflineDirective,
         provideStore({ 
             count: counterReducer, 
             user: userReducer, 

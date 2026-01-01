@@ -18,22 +18,17 @@ export class HomeComponent implements OnInit {
 
   count = signal(0);
 
-  counter$: Observable<number>;
+  // counter$: Observable<number>;
 
-  store = inject(Store<IAppState>);
+  // store = inject(Store<IAppState>);
 
   cityList: string[] = ['Mumbai', 'Pune', 'Nagpur'];
 
   constructor(private changeDetRef: ChangeDetectorRef){
-    this.counter$ = this.store.select('count');
+    // this.counter$ = this.store.select('count');
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      console.log('it should run after 5 seconds');
-      this.count.set(10);
-      this.changeDetRef.detectChanges();
-    }, 5000);
 
   }
 
