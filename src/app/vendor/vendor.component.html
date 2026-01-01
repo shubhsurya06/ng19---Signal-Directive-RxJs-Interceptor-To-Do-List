@@ -12,7 +12,20 @@
     </div>
     <div class="row">
         @if (isShowAlert) {
-            <app-alert></app-alert>
+        <app-alert></app-alert>
         }
     </div>
+
+    <div class="div" *appOffline>
+
+        <h1>
+            You are online!
+        </h1>
+    </div>
+    <!-- <div class="div" *appOffline="false">
+
+        <h1>
+            You are offline!
+        </h1>
+    </div> -->
 </div>
